@@ -6,8 +6,141 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  schema?: Record<string, any> | Array<Record<string, any>>;
+  noindex?: boolean;
 }
-const { title, description } = Astro.props;
+
+const {
+  title,
+  description,
+  ogImage = 'https://crossfoot.netlify.app/og-image.jpg',
+  ogType = 'website',
+  schema,
+  noindex = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://crossfoot.netlify.app');
+
+// Automated Google BreadcrumbList schema
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbItems = [
+  {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'Home',
+    item: 'https://crossfoot.netlify.app/',
+  },
+  ...pathSegments.map((segment, idx) => {
+    const segmentName = segment
+      .split('-')
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ');
+    const segmentUrl = `https://crossfoot.netlify.app/${pathSegments.slice(0, idx + 1).join('/')}/`;
+    return {
+      '@type': 'ListItem',
+      position: idx + 2,
+      name: segmentName,
+      item: segmentUrl,
+    };
+  }),
+];
+
+const breadcrumbSchema =
+  pathSegments.length > 0
+    ? {
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbItems,
+      }
+    : null;
+
+// Master Organization, LocalBusiness & WebSite JSON-LD Schema
+const masterSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['AccountingService', 'ProfessionalService'],
+      '@id': 'https://crossfoot.netlify.app/#organization',
+      name: 'Crossfoot Reconciliation Practice',
+      alternateName: 'Crossfoot',
+      url: 'https://crossfoot.netlify.app',
+      logo: 'https://crossfoot.netlify.app/favicon.svg',
+      image: 'https://crossfoot.netlify.app/og-image.jpg',
+      description:
+        'Fixed-scope business data consolidation and operational-to-financial reconciliation practice matching warehouse dispatch challans against Tally sales registers for distributors and manufacturers in Coimbatore, Chennai, and Tamil Nadu.',
+      telephone: '+91-98765-43210',
+      email: 'contact@crossfoot.netlify.app',
+      priceRange: '₹1,999 - ₹50,000',
+      currenciesAccepted: 'INR',
+      paymentAccepted: 'Bank Transfer, UPI, NEFT, RTGS',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Coimbatore',
+        addressRegion: 'Tamil Nadu',
+        postalCode: '641002',
+        addressCountry: 'IN',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 11.0168,
+        longitude: 76.9558,
+      },
+      areaServed: [
+        { '@type': 'City', name: 'Coimbatore' },
+        { '@type': 'City', name: 'Chennai' },
+        { '@type': 'City', name: 'Tiruppur' },
+        { '@type': 'City', name: 'Salem' },
+        { '@type': 'City', name: 'Madurai' },
+        { '@type': 'AdministrativeArea', name: 'Tamil Nadu' },
+        { '@type': 'Country', name: 'India' },
+      ],
+      knowsAbout: [
+        'TallyPrime Dispatch Reconciliation',
+        'Warehouse Delivery Challan to Invoice Matching',
+        'Unbilled Sales Leakage Audit',
+        'Stock vs Book Inventory Reconciliation',
+        'Monthly MIS Reporting Automation',
+        'Data Cleansing and Exception Registers',
+      ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Reconciliation Practice Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            name: '4-Day Dispatch-to-Invoice Diagnostic',
+            price: '1999',
+            priceCurrency: 'INR',
+            description:
+              'Fixed-scope audit of 1 closed month matching warehouse delivery challans against Tally sales registers with row-level proof. Fee 100% credited toward implementation.',
+            url: 'https://crossfoot.netlify.app/diagnostic/',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Single-Flow Implementation Sprint',
+            price: '25000',
+            priceCurrency: 'INR',
+            description:
+              'Custom air-gapped reconciliation pipeline running on local Excel / DuckDB without cloud dependencies.',
+            url: 'https://crossfoot.netlify.app/pricing/',
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://crossfoot.netlify.app/#website',
+      url: 'https://crossfoot.netlify.app',
+      name: 'Crossfoot',
+      description: 'Dispatch-to-Invoice Reconciliation for Distributors | Coimbatore & Chennai',
+      publisher: { '@id': 'https://crossfoot.netlify.app/#organization' },
+      inLanguage: 'en-IN',
+    },
+    ...(breadcrumbSchema ? [breadcrumbSchema] : []),
+    ...(schema ? (Array.isArray(schema) ? schema : [schema]) : []),
+  ],
+};
 ---
 
 <!doctype html>
@@ -17,11 +150,37 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site ?? 'https://crossfoot.netlify.app')} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site ?? 'https://crossfoot.netlify.app')} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta
+      name="robots"
+      content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+    />
+
+    <!-- Local & Geographic SEO -->
+    <meta name="geo.region" content="IN-TN" />
+    <meta name="geo.placename" content="Coimbatore, Chennai, Tamil Nadu, India" />
+    <meta name="geo.position" content="11.0168;76.9558" />
+    <meta name="ICBM" content="11.0168, 76.9558" />
+
+    <!-- OpenGraph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:site_name" content="Crossfoot Reconciliation Practice" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Crossfoot Reconciliation Practice — Find what your warehouse dispatched that your books never billed" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Crossfoot Reconciliation Practice" />
+
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#0b1310" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -31,6 +190,10 @@ const { title, description } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(masterSchema)} />
+
     <!-- Analytics: paste your GA4 snippet here after creating the property.
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>

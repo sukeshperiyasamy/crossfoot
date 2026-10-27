@@ -60,6 +60,7 @@ const jsonLd = {
 <Base
   title="FAQ — Objections Answered Plainly | Crossfoot"
   description="Straight answers to the questions distributors ask first: what Tally can't do, why not use Excel, data safety, fixed pricing, and what happens if the audit finds nothing."
+  schema={jsonLd}
 >
   <section class="border-b border-line bg-paper-100">
     <div class="container-x py-16 sm:py-20">
@@ -102,6 +103,5 @@ const jsonLd = {
     title="Have a question this page didn’t answer?"
     sub="Fifteen minutes, no pitch. Bring your hardest objection — we would rather lose the call than the truth."
   />
-
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </Base>
+

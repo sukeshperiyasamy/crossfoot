@@ -49,11 +49,35 @@ const excluded = [
   'Writing anything back into your live Tally — we are strictly read-only',
   'Statutory audit, tax or legal opinions',
 ];
+
+const serviceSchema = {
+  '@type': 'Service',
+  name: '4-Day Dispatch-to-Invoice Reconciliation Diagnostic',
+  serviceType: 'Financial Reconciliation Audit',
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'Crossfoot',
+    url: 'https://crossfoot.netlify.app',
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Tamil Nadu',
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '1999',
+    priceCurrency: 'INR',
+    description:
+      'Fixed-fee 4-day audit matching warehouse delivery challans against Tally sales registers with row-level proof.',
+    url: 'https://crossfoot.netlify.app/diagnostic/',
+  },
+};
 ---
 
 <Base
-  title="The 4-Day Dispatch-to-Invoice Diagnostic — ₹1,999 fixed | Crossfoot"
-  description="A fixed-scope four-day reconciliation audit for distributors using Tally: traceable exception register, clean master dataset, executive walkthrough. ₹1,999 + GST introductory launch fee, fully credited toward automation."
+  title="4-Day Dispatch-to-Invoice Reconciliation Diagnostic — ₹1,999 Fixed | Crossfoot"
+  description="Fixed-fee ₹1,999 diagnostic reconciling warehouse dispatches against Tally sales registers. Uncover unbilled challans, duplicate bills, and margin leakage with row-level proof."
+  schema={serviceSchema}
 >
   <!-- Hero -->
   <section class="border-b border-line bg-paper-100">

@@ -75,11 +75,24 @@ const faqs = [
     a: 'A mutual NDA is signed before we receive anything. Processing is 100% offline on an encrypted machine — no cloud uploads, no public AI tools, read-only files, and deletion 14 days after handover.',
   },
 ];
+
+const homeFaqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q.replace(/[“”]/g, ''),
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.a,
+    },
+  })),
+};
 ---
 
 <Base
   title="Crossfoot — Dispatch-to-Invoice Reconciliation for Distributors | Coimbatore & Chennai"
   description="A fixed-scope 4-day diagnostic that matches your dispatch records against your Tally sales register and flags every unbilled challan, quantity mismatch and duplicate bill — with row-level proof. Offline processing, NDA first."
+  schema={homeFaqSchema}
 >
   <!-- ============ HERO ============ -->
   <section class="relative overflow-hidden">
