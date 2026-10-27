@@ -1,0 +1,87 @@
+---
+const year = new Date().getFullYear();
+const cols = [
+  {
+    head: 'Services',
+    links: [
+      { href: '/diagnostic', label: '4-Day Diagnostic' },
+      { href: '/pricing', label: 'Implementation Sprints' },
+      { href: '/pricing', label: 'Monthly MIS Retainer' },
+      { href: '/who-we-help', label: 'CA Firm Partnerships' },
+    ],
+  },
+  {
+    head: 'Practice',
+    links: [
+      { href: '/how-it-works', label: 'How it works' },
+      { href: '/proof', label: 'Sample deliverables' },
+      { href: '/security', label: 'Data security' },
+      { href: '/about', label: 'About' },
+    ],
+  },
+  {
+    head: 'Company',
+    links: [
+      { href: '/who-we-help', label: 'Who we help' },
+      { href: '/faq', label: 'FAQ' },
+      { href: '/contact', label: 'Contact' },
+      { href: '/nda', label: 'Read our draft NDA' },
+    ],
+  },
+];
+---
+
+<footer class="bg-ink-950 text-paper-50">
+  <div class="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5 lg:py-16">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-2.5">
+        <svg viewBox="0 0 32 32" class="h-7 w-7" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#FBF9F5"></rect>
+          <path d="M10.5 21.5 21.5 10.5M10.5 10.5l11 11" stroke="#111C17" stroke-width="2.4" stroke-linecap="round"></path>
+          <path d="M9.5 26h13" stroke="#2E8A60" stroke-width="2.4" stroke-linecap="round"></path>
+        </svg>
+        <span class="font-display text-lg font-semibold tracking-tight">Crossfoot</span>
+      </div>
+      <p class="body-dark mt-4 max-w-sm text-[14px]">
+        A fixed-scope reconciliation practice for distributors and manufacturers. We match what left
+        your warehouse against what entered your books — and prove every difference with row-level
+        evidence.
+      </p>
+      <p class="mt-5 font-mono text-[11px] tracking-[0.18em] text-paper-50/50 uppercase">
+        Coimbatore · Chennai · Remote across India
+      </p>
+    </div>
+
+    {
+      cols.map((col) => (
+        <div>
+          <h3 class="font-mono text-[10.5px] font-medium tracking-[0.22em] text-paper-50/45 uppercase">
+            {col.head}
+          </h3>
+          <ul class="mt-4 space-y-2.5">
+            {col.links.map((l) => (
+              <li>
+                <a href={l.href} class="text-[13.5px] text-paper-50/70 transition-colors hover:text-paper-50">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="border-t border-paper-50/10">
+    <div class="container-x flex flex-col gap-3 py-6 lg:flex-row lg:items-center lg:justify-between">
+      <p class="max-w-3xl text-[12px] leading-5 text-paper-50/45">
+        Crossfoot provides data reconciliation and management reporting services. Deliverables are
+        internal management decision-support aids based on records supplied by the client. We are not
+        Chartered Accountants and provide no statutory audit, tax, or legal opinions.
+      </p>
+      <p class="shrink-0 font-mono text-[11px] tracking-[0.14em] text-paper-50/45 uppercase">
+        © {year} Crossfoot
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,31 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title?: string;
+  sub?: string;
+  dark?: boolean;
+}
+const {
+  title = 'One conversation.',
+  sub = 'If your records already tie out cleanly, we will tell you and leave it there. If they do not, you will see exactly where — in four days.',
+  dark = true,
+} = Astro.props;
+---
+
+<section class:list={['border-t', dark ? 'border-paper-50/10 bg-ink-950' : 'border-line bg-paper-100']}>
+  <div class="container-x flex flex-col items-start gap-8 py-16 lg:flex-row lg:items-center lg:justify-between lg:py-20">
+    <div class="max-w-2xl">
+      <p class:list={[dark ? 'eyebrow-dark' : 'eyebrow']}>Start here</p>
+      <h2 class:list={['display-2 mt-4', dark ? 'text-paper-50' : 'text-ink']}>{title}</h2>
+      <p class:list={['mt-4 max-w-xl text-[15px] leading-7', dark ? 'text-paper-50/65' : 'text-ink/70']}>{sub}</p>
+    </div>
+    <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+      <a href="/contact" class="btn-primary">
+        Book a 15-minute call
+        <Icon name="arrow-right" class="h-4 w-4" />
+      </a>
+      <a href="/proof" class:list={[dark ? 'btn-dark' : 'btn-secondary']}>See a sample exception report</a>
+    </div>
+  </div>
+</section>

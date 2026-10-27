@@ -1,0 +1,180 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaBand from '../components/CtaBand.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+
+const guarantees = [
+  {
+    icon: 'lock',
+    title: 'Offline, air-gapped processing',
+    body: 'Your exports are processed on an encrypted machine with no cloud sync. No Google Drive, no Dropbox, no browser uploads. The pipeline runs locally, always.',
+  },
+  {
+    icon: 'file-check',
+    title: 'Mutual NDA before any file',
+    body: 'A one-page plain-English NDA is executed before we receive anything — binding on us, not just on you. It is downloadable from this site so you can read it before the first call.',
+  },
+  {
+    icon: 'eye-off',
+    title: 'Zero public AI tools',
+    body: 'Your ledgers, customer names and margins are never pasted into ChatGPT, Claude, Gemini or any public model or cloud API. All transformation logic is deterministic code we can show you.',
+  },
+  {
+    icon: 'shield',
+    title: 'Read-only ingestion',
+    body: 'We receive exported copies. Your original files are write-protected in a raw vault folder; every transformation happens on working copies. We never write to your live Tally — that is contractual, not a courtesy.',
+  },
+  {
+    icon: 'trash',
+    title: 'Deletion you can verify',
+    body: 'Raw client files are cryptographically shredded 14 days after handover — or immediately on your written request, at any time. Confirmation in writing, on request.',
+  },
+  {
+    icon: 'scale',
+    title: 'Liability, capped in writing',
+    body: 'Our SOW caps total liability at the fees paid and excludes consequential damages, with a statutory-neutrality clause: our reports are management aids, not audits.',
+  },
+];
+
+const neverAsk = [
+  'Bank login credentials, OTPs or tokens',
+  'Your Tally login or remote access to live systems',
+  'Aadhaar numbers, staff salary details or customer phone numbers',
+  '“Just a quick look” at unexported systems — exports only, under NDA',
+];
+---
+
+<Base
+  title="Data Security & Confidentiality — Offline Processing, NDA, Zero AI | Crossfoot"
+  description="How Crossfoot handles client financial data: 100% offline air-gapped processing, mutual NDA before any file, zero public AI tools, read-only ingestion, verified deletion after 14 days."
+>
+  <!-- Hero — dark -->
+  <section class="bg-ink-950">
+    <div class="container-x py-16 sm:py-20 lg:py-24">
+      <p class="eyebrow-dark">Data security & confidentiality</p>
+      <h1 class="display-1 mt-5 max-w-3xl text-paper-50">
+        Your margins are your business. Ours is making sure we never see them twice.
+      </h1>
+      <p class="lead mt-6 max-w-2xl text-paper-50/70">
+        A reconciliation practice lives or dies on confidentiality. Here is exactly how your data is
+        received, processed, retained and destroyed — in writing, before you share a single file.
+      </p>
+      <div class="mt-8">
+        <a href="/nda" class="btn-dark">
+          Read the draft mutual NDA
+          <Icon name="arrow-right" class="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantees -->
+  <section class="py-20 lg:py-24">
+    <div class="container-x">
+      <SectionHead
+        index="01"
+        eyebrow="The six guarantees"
+        title="Structural safeguards, not promises"
+        sub="Every item below is either architectural (it cannot happen) or contractual (you can enforce it)."
+      />
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          guarantees.map((g) => (
+            <div class="card card-pad">
+              <div class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-line bg-paper-50">
+                <Icon name={g.icon} class="h-5 w-5 text-match-700" />
+              </div>
+              <h3 class="display-3 mt-4">{g.title}</h3>
+              <p class="body-text mt-2.5">{g.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <!-- Data journey -->
+  <section class="py-20 lg:py-24">
+    <div class="container-x grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <SectionHead
+          index="02"
+          eyebrow="How your data travels"
+          title="From your export to verified deletion"
+        />
+        <ol class="mt-10 space-y-0">
+          {
+            [
+              ['You export', 'Two agreed files — Tally register, dispatch sheet — sent via agreed channel, ideally masked for the feasibility check.'],
+              ['We vault', 'Files land in an encrypted per-client folder. Originals write-protected. Working copies only from here.'],
+              ['We process offline', 'Local Python pipeline, deterministic rules, no network calls during processing, full transformation log kept.'],
+              ['We deliver', 'Exception register, clean dataset and summary sent to you; 30-minute walkthrough call.'],
+              ['We destroy', 'Cryptographic deletion of raw files at day 14 — or instantly on request — with written confirmation if you ask.'],
+            ].map(([t, b], i) => (
+              <li class="relative flex gap-5 pb-8 last:pb-0">
+                <div class="flex flex-col items-center">
+                  <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-match-200 bg-match-50 font-mono text-[12px] font-medium text-match-700">
+                    {i + 1}
+                  </span>
+                  {i < 4 && <span class="mt-1 w-px flex-1 bg-line" aria-hidden="true" />}
+                </div>
+                <div class="pb-2">
+                  <h3 class="font-display text-[17px] font-semibold text-ink">{t}</h3>
+                  <p class="body-text mt-1.5">{b}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <div class="space-y-6">
+        <div class="card overflow-hidden">
+          <div class="border-b border-exception-200 bg-exception-50 px-6 py-4">
+            <p class="font-mono text-[11px] font-medium tracking-[0.18em] text-exception-700 uppercase">What we never ask for</p>
+          </div>
+          <ul class="space-y-1 p-3">
+            {
+              neverAsk.map((item) => (
+                <li class="flex items-start gap-3 px-3 py-2.5">
+                  <Icon name="x" class="mt-1 h-4 w-4 shrink-0 text-exception-600" />
+                  <span class="text-[14px] leading-6 text-ink/80">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="card card-pad">
+          <h3 class="display-3">Data minimization</h3>
+          <p class="body-text mt-3">
+            We ask only for the columns the agreed scope requires. Bank account numbers, employee records
+            and personal contact data have no place in a dispatch-to-invoice reconciliation — and we will
+            tell you to strip them before sending.
+          </p>
+        </div>
+        <div class="card card-pad">
+          <h3 class="display-3">Legal posture</h3>
+          <p class="body-text mt-3">
+            Engagements run under a mutual NDA and a fixed-scope SOW with liability capped at fees paid.
+            We process business records as your service provider under the Digital Personal Data Protection
+            Act, 2023 framework, and our deliverables carry a statutory-neutrality clause: management aids,
+            never audits.
+          </p>
+          <a href="/legal-summary" class="mt-4 inline-flex items-center gap-2 text-[13.5px] font-semibold text-match-700">
+            Plain-English engagement terms
+            <Icon name="arrow-right" class="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Skeptical? Good. Read the NDA first."
+    sub="The full draft agreement is on this site — no call required. When you are satisfied, book the conversation."
+  />
+</Base>

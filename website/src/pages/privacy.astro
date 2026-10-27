@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+
+const sections = [
+  {
+    h: '1. Who we are',
+    p: [
+      'Crossfoot (“we”, “us”) is a data reconciliation and management reporting practice based in Tamil Nadu, India. This policy covers information collected through this website. Information you share as part of a paid engagement is governed separately by our mutual NDA and Statement of Work.',
+    ],
+  },
+  {
+    h: '2. What we collect through this site',
+    p: [
+      'Contact form: your name, business name, email, phone number (optional) and the message you send us.',
+      'Booking: if you schedule a call, your name, email and any details you enter are processed by our scheduling provider (Calendly) under its own privacy policy.',
+      'Analytics: we use Google Analytics to measure aggregate page views and interactions. No advertising profiles are built from this data.',
+    ],
+  },
+  {
+    h: '3. Why we collect it',
+    p: [
+      'Solely to respond to your enquiry, schedule and conduct calls, and deliver services you engage us for. We do not sell, rent or trade your information, and we do not send bulk marketing messages.',
+    ],
+  },
+  {
+    h: '4. Client engagement data',
+    p: [
+      'During an engagement we process business records you supply (exports such as dispatch registers and sales registers) strictly as your service provider, on documented instructions, under NDA. Processing is performed offline on encrypted storage; raw client files are deleted 14 days after handover or earlier on written request. You are responsible for ensuring records you share comply with your own legal obligations.',
+    ],
+  },
+  {
+    h: '5. Sharing & processors',
+    p: [
+      'We share data only with processors essential to operating this site and practice: our hosting provider (Netlify), form delivery, scheduling (Calendly) and analytics (Google). Each processes data on our instructions under its own terms. We disclose information further only where required by law.',
+    ],
+  },
+  {
+    h: '6. Retention',
+    p: [
+      'Enquiry details are kept up to 24 months for follow-up, then deleted. Engagement records are retained as required for tax and contractual purposes. Raw client data files follow the 14-day deletion commitment described above.',
+    ],
+  },
+  {
+    h: '7. Your rights',
+    p: [
+      'Under India’s Digital Personal Data Protection Act, 2023 (and comparable laws elsewhere), you may request access, correction, or erasure of your personal data, and withdraw consent for future contact at any time — by writing to the address below. We act on verified requests within a reasonable period.',
+    ],
+  },
+  {
+    h: '8. Security',
+    p: [
+      'Full-disk encryption on working machines, multi-factor authentication on business accounts, read-only handling of client source files, and cryptographic deletion at end of retention. Suspected incidents are contained and notified to affected clients promptly, and to CERT-In within statutory timelines where applicable.',
+    ],
+  },
+  {
+    h: '9. Grievance contact',
+    p: ['Write to hello@crossfoot.in with the subject “Privacy request”. We respond within 7 business days.'],
+  },
+  {
+    h: '10. Changes to this policy',
+    p: ['Material changes will be posted on this page with an updated date. The policy was last updated on 27 October 2026.'],
+  },
+];
+---
+
+<Base
+  title="Privacy Policy | Crossfoot"
+  description="How Crossfoot collects, uses, retains and protects information through this website and during client engagements. Aligned with India's Digital Personal Data Protection Act, 2023."
+>
+  <section class="border-b border-line bg-paper-100">
+    <div class="container-x py-16 sm:py-20">
+      <p class="eyebrow">Legal</p>
+      <h1 class="display-1 mt-5">Privacy Policy</h1>
+      <p class="lead mt-5 max-w-2xl">
+        Plain language, because a privacy policy you cannot understand is not consent — it is paperwork.
+        Last updated: 27 October 2026.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20">
+    <div class="container-x max-w-3xl">
+      {
+        sections.map((s) => (
+          <div class="border-b border-line py-7 first:pt-0 last:border-0">
+            <h2 class="display-3">{s.h}</h2>
+            {s.p.map((para) => (
+              <p class="body-text mt-3">{para}</p>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Base>

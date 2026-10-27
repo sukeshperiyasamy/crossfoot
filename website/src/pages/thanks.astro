@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<Base
+  title="Enquiry Received — Thank You | Crossfoot"
+  description="Your enquiry has reached Crossfoot. Expect a response within one business day."
+>
+  <section class="py-24 lg:py-32">
+    <div class="container-x max-w-xl text-center">
+      <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-match-200 bg-match-50">
+        <Icon name="check" class="h-6 w-6 text-match-700" />
+      </div>
+      <h1 class="display-2 mt-8">Received. Thank you.</h1>
+      <p class="lead mt-4">
+        Your enquiry is in the founder’s inbox — not a ticketing queue. Expect a reply within one
+        business day. If it is urgent, call or WhatsApp the number on the contact page.
+      </p>
+      <p class="body-text mt-6 text-[13.5px]">
+        Meanwhile, the two things worth reading before we speak:
+        <a href="/security" class="font-medium text-match-700 underline decoration-match-200 underline-offset-4">the security page</a>
+        and
+        <a href="/nda" class="font-medium text-match-700 underline decoration-match-200 underline-offset-4">the draft NDA</a>.
+      </p>
+      <a href="/" class="btn-secondary mt-10">Back to home</a>
+    </div>
+  </section>
+</Base>

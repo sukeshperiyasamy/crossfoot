@@ -1,0 +1,186 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import SectionHead from '../components/SectionHead.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const steps = [
+  {
+    n: '01',
+    title: 'Qualification call — 20 minutes',
+    you: 'Bring your month-end story: which records refuse to agree, how often, who fixes it today.',
+    us: 'We ask about workflow, not budget. If we do not hear a recurring, material reconciliation problem, we say so and part as friends.',
+  },
+  {
+    n: '02',
+    title: 'NDA & fixed-scope SOW',
+    you: 'Read a one-page mutual NDA in plain English — it is downloadable from this site before you ever speak to us.',
+    us: 'We issue a fixed-scope statement of work: the exact question, the two files, the row ceiling, the fee, the deadline. You e-sign; no chasing attachments.',
+  },
+  {
+    n: '03',
+    title: 'Advance payment & secure intake',
+    you: 'Pay 100% of the fee by NEFT/RTGS/UPI. Send the two agreed exports — masked samples are welcome for the feasibility check.',
+    us: 'Files land in an encrypted, offline client vault. Originals are write-protected; all work happens on copies.',
+  },
+  {
+    n: '04',
+    title: '24-hour feasibility gate',
+    you: 'If we flag missing join keys or corrupted structure, you re-export while the SLA clock waits.',
+    us: 'We profile schemas, row counts, duplicates and key quality before promising a delivery date. This gate is why our fixed price can be trusted.',
+  },
+  {
+    n: '05',
+    title: 'Matching & manual verification — days 2–3',
+    you: 'Nothing. This is our work.',
+    us: 'Deterministic three-tier matching offline, control totals reconciled to your source registers, then human verification of the ten largest variances and a random sample of matches.',
+  },
+  {
+    n: '06',
+    title: 'Executive walkthrough — day 4',
+    you: 'Bring the owner and the finance lead. Thirty minutes.',
+    us: 'We present matched %, exception value by category, and each finding traced to its source rows. You keep the register, the clean dataset and the documented rules.',
+  },
+  {
+    n: '07',
+    title: 'Your decision window — 14 days',
+    you: 'Decide: automate it (sprint, with the ₹1,999 credited), monitor it monthly (retainer), or take the files and run it yourselves.',
+    us: 'No pressure either way. The deliverables are yours to keep regardless of what you choose next.',
+  },
+];
+
+const sla = [
+  ['Diagnostic delivery', '4 business days from clean inputs'],
+  ['Feasibility check', '24 hours from file receipt'],
+  ['Revision window', '1 consolidated round, 5 business days'],
+  ['Deletion of raw files', '14 days after handover, on request any time'],
+  ['Call response', 'Within 1 business day'],
+];
+---
+
+<Base
+  title="How It Works — NDA, Scope, Delivery, Payment Terms | Crossfoot"
+  description="The full seven-step engagement: qualification call, NDA and SOW, secure intake, 24-hour feasibility gate, matching, executive walkthrough, and your decision window. Payment terms and SLAs in plain English."
+>
+  <section class="border-b border-line bg-paper-100">
+    <div class="container-x py-16 sm:py-20">
+      <p class="eyebrow">The engagement</p>
+      <h1 class="display-1 mt-5 max-w-3xl">A process designed so nothing is surprising — including the bill</h1>
+      <p class="lead mt-6 max-w-2xl">
+        Fixed prices only work when scope, sequence and payment terms are written down before work begins.
+        Here is the entire engagement, end to end.
+      </p>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="py-20 lg:py-24">
+    <div class="container-x">
+      <div class="space-y-5">
+        {
+          steps.map((s) => (
+            <div class="card grid gap-6 p-6 sm:p-8 lg:grid-cols-[140px_1fr_1fr] lg:gap-10">
+              <div>
+                <span class="font-mono text-[26px] font-medium text-ink/20">{s.n}</span>
+              </div>
+              <div>
+                <h2 class="display-3">{s.title}</h2>
+                <div class="mt-4 flex items-start gap-3">
+                  <span class="chip chip-ink mt-0.5 shrink-0">You</span>
+                  <p class="body-text">{s.you}</p>
+                </div>
+              </div>
+              <div class="lg:border-l lg:border-line lg:pl-10">
+                <div class="flex items-start gap-3">
+                  <span class="chip chip-match mt-0.5 shrink-0">We</span>
+                  <p class="body-text">{s.us}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SLA + payment -->
+  <section class="border-y border-line bg-paper-100 py-20 lg:py-24">
+    <div class="container-x grid gap-10 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <SectionHead index="01" eyebrow="Service levels" title="Commitments with clocks on them" />
+        <div class="card mt-8 overflow-hidden">
+          {
+            sla.map(([k, v]) => (
+              <div class="flex items-center justify-between gap-4 border-b border-line px-5 py-4 last:border-b-0">
+                <span class="text-[14px] font-medium text-ink">{k}</span>
+                <span class="font-mono text-[12px] text-ink/60">{v}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div>
+        <SectionHead index="02" eyebrow="Payment terms" title="Money before files — always" />
+        <div class="mt-8 space-y-4">
+          <div class="card p-6">
+            <div class="flex items-baseline justify-between gap-4">
+              <h3 class="font-display text-lg font-semibold text-ink">Diagnostic</h3>
+              <span class="font-mono text-[11px] tracking-[0.14em] text-match-700 uppercase">100% upfront</span>
+            </div>
+            <p class="body-text mt-2">₹1,999 + GST before file intake. Formal invoice, current-account NEFT/RTGS/UPI.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-baseline justify-between gap-4">
+              <h3 class="font-display text-lg font-semibold text-ink">Implementation sprint</h3>
+              <span class="font-mono text-[11px] tracking-[0.14em] text-match-700 uppercase">40 / 40 / 20</span>
+            </div>
+            <p class="body-text mt-2">40% at kickoff, 40% on the working prototype, 20% on sign-off and handover. Source files transfer after final settlement.</p>
+          </div>
+          <div class="card p-6">
+            <div class="flex items-baseline justify-between gap-4">
+              <h3 class="font-display text-lg font-semibold text-ink">Monthly retainer</h3>
+              <span class="font-mono text-[11px] tracking-[0.14em] text-match-700 uppercase">Monthly, in advance</span>
+            </div>
+            <p class="body-text mt-2">Billed on the 1st, runs only while you are satisfied — monthly tenure, no lock-in.</p>
+          </div>
+          <p class="body-text text-[13px]">
+            Out-of-scope requests are never silently absorbed: they are quoted as a written change order at ₹1,200/hour and wait for your signature.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <!-- What we don't do -->
+  <section class="py-20 lg:py-24">
+    <div class="container-x max-w-3xl">
+      <SectionHead
+        index="03"
+        eyebrow="Boundaries"
+        title="What we don’t do — on principle"
+        sub="Clear boundaries are what make a fixed price and an honest audit possible."
+      />
+      <ul class="mt-10 space-y-3">
+        {
+          [
+            'Statutory audit, tax filing or legal opinions — we are data engineers, not CAs',
+            'Bookkeeping or data entry of paper records',
+            'Writing to your live Tally, ERP or bank systems — strictly read-only, always',
+            'Labeling any finding as “fraud” or “evasion” — we report discrepancies requiring investigation; conclusions are yours and your auditor’s',
+            'Free “sample cleanups” of real client data — demonstrations use synthetic data only',
+          ].map((item) => (
+            <li class="flex items-start gap-3 border-b border-line pb-3">
+              <Icon name="x" class="mt-1 h-4 w-4 shrink-0 text-exception-600" />
+              <span class="text-[14.5px] leading-6 text-ink/80">{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

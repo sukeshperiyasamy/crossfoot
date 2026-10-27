@@ -1,0 +1,165 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const ladder = [
+  {
+    tag: 'Launch Cohort Offer',
+    name: '4-Day Diagnostic',
+    price: '₹1,999',
+    note: '+ GST · introductory fixed fee',
+    points: [
+      'One reconciliation workflow, bounded in writing',
+      'Up to 2 source files · 100,000 rows',
+      'Clean master dataset + exception register',
+      'Executive summary + 30-min walkthrough',
+      'Delivery in 4 business days from clean inputs',
+    ],
+    cta: { href: '/diagnostic', label: 'Diagnostic details' },
+    featured: true,
+  },
+  {
+    tag: 'After the diagnostic',
+    name: 'Implementation Sprint',
+    price: '₹25,000–₹50,000',
+    note: 'fixed after scoping',
+    points: [
+      'Permanent, locally-run reconciliation pipeline',
+      'One-click monthly refresh on your own machine',
+      'Automated exception flags and error logging',
+      'Staff handover, SOP and documented matching rules',
+      'Your ₹1,999 diagnostic fee fully credited',
+    ],
+    cta: { href: '/how-it-works', label: 'Payment terms' },
+    featured: false,
+  },
+  {
+    tag: 'Optional',
+    name: 'Monthly MIS Retainer',
+    price: '₹5,000–₹12,000',
+    note: 'per month · no lock-in',
+    points: [
+      'Monthly ingestion run and reconciliation',
+      'Exception isolation and verification',
+      'Verified numbers pack before the 5th',
+      'Schema-change fixes as formats drift',
+      'Monthly tenure — cancel any month',
+    ],
+    cta: { href: '/contact', label: 'Ask about retainers' },
+    featured: false,
+  },
+];
+---
+
+<Base
+  title="Pricing — Fixed-Fee Diagnostic ₹1,999, Sprints & Retainers | Crossfoot"
+  description="Transparent fixed pricing: ₹1,999 introductory four-day diagnostic (credited 100% toward implementation), ₹25,000–₹50,000 automation sprints, ₹5,000–₹12,000/month retainers. No hourly billing."
+>
+  <section class="border-b border-line bg-paper-100">
+    <div class="container-x py-16 sm:py-20">
+      <p class="eyebrow">Pricing</p>
+      <h1 class="display-1 mt-5 max-w-3xl">Fixed prices, because the scope is fixed first</h1>
+      <p class="lead mt-6 max-w-2xl">
+        Hourly billing rewards slowness; vague quotes breed disputes. Every engagement here has a written
+        scope, a written price and a written boundary — before any money moves.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24">
+    <div class="container-x">
+      <div class="grid gap-5 lg:grid-cols-3">
+        {
+          ladder.map((t) => (
+            <div class:list={['card flex flex-col p-6 sm:p-8', t.featured && 'border-match-600 border-2 shadow-[0_2px_16px_rgba(17,92,62,0.08)]']}>
+              <span class:list={[t.featured ? 'chip chip-match' : 'chip chip-ink', 'self-start']}>{t.tag}</span>
+              <h2 class="display-3 mt-5">{t.name}</h2>
+              <p class="mt-3">
+                <span class="font-display text-[2rem] font-semibold tracking-tight text-ink">{t.price}</span>
+              </p>
+              <p class="font-mono text-[10.5px] tracking-[0.14em] text-ink/50 uppercase">{t.note}</p>
+              <ul class="mt-6 flex-1 space-y-3">
+                {t.points.map((p) => (
+                  <li class="flex items-start gap-2.5">
+                    <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-match-600" />
+                    <span class="text-[13.5px] leading-6 text-ink/75">{p}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={t.cta.href} class="mt-7 inline-flex items-center gap-2 text-[13.5px] font-semibold text-match-700">
+                {t.cta.label}
+                <Icon name="arrow-right" class="h-4 w-4" />
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- The credit mechanism -->
+      <div class="card mt-8 flex flex-col items-start gap-6 border-match-600! bg-match-50! p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+        <div class="max-w-2xl">
+          <p class="font-mono text-[11px] font-medium tracking-[0.2em] text-match-700 uppercase">The credit mechanism</p>
+          <p class="mt-2 text-[15px] leading-7 text-ink/80">
+            Commission an implementation sprint within 14 days of your diagnostic walkthrough and the
+            <strong class="font-semibold text-ink">entire ₹1,999 is deducted</strong> from the sprint fee.
+            The diagnostic either proves the automation is worth building — or it just bought you certainty.
+            Either way the audit is paid for.
+          </p>
+        </div>
+        <a href="/contact" class="btn-primary shrink-0">Book a call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fine print that isn't fine print -->
+  <section class="border-y border-line bg-paper-100 py-20 lg:py-24">
+    <div class="container-x grid gap-10 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <SectionHead
+          index="01"
+          eyebrow="Why fixed price works here"
+          title="The price holds because the boundary holds"
+        />
+        <div class="mt-8 space-y-5">
+          <p class="body-text">
+            Fixed-fee projects fail when scope drifts silently. Ours don’t, because the boundary is
+            contractual: files, row counts, matching rules and deliverables are frozen in the SOW before
+            kickoff. Change any of it and the change is priced <em class="not-italic font-medium text-ink">before</em> it happens.
+          </p>
+          <p class="body-text">
+            The one honest exception is the feasibility gate: if your exports arrive corrupted or missing
+            join keys, we pause the clock and quote the extra cleaning as a written change order. You
+            approve it or we stop — never a silent overrun.
+          </p>
+        </div>
+      </div>
+      <div>
+        <SectionHead index="02" eyebrow="The parts people ask about" title="Taxes, payment and the boring details" />
+        <div class="card mt-8 overflow-hidden">
+          {
+            [
+              ['GST', 'Fees are exclusive of 18% GST for Indian clients. Export clients are billed at 0% under a Letter of Undertaking.'],
+              ['Payment rails', 'NEFT / RTGS / UPI to a current account, against a formal invoice. International: Wise or Skydo transfer.'],
+              ['Terms', 'Diagnostic 100% upfront · Sprint 40/40/20 by milestone · Retainer monthly in advance.'],
+              ['Change orders', 'Out-of-scope work quoted in writing at ₹1,200/hour and executed only on your signed approval.'],
+              ['Revisions', 'One consolidated revision round within 5 business days of delivery, included in every fee.'],
+              ['Liability', 'Capped at fees paid under the engagement SOW. Full terms in the legal summary.'],
+            ].map(([k, v]) => (
+              <div class="border-b border-line px-5 py-4 last:border-b-0">
+                <p class="font-mono text-[10.5px] tracking-[0.16em] text-ink/45 uppercase">{k}</p>
+                <p class="mt-1 text-[14px] leading-6 text-ink/80">{v}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="₹1,999 is the whole decision."
+    sub="One fixed fee, one bounded scope, one honest audit. If the findings justify automation, the fee comes straight back off the build."
+  />
+</Base>

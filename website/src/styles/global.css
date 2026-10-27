@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+/* ============================================================
+   CROSSFOOT DESIGN SYSTEM — "The Ledger"
+   Paper & ink, hairline rules, monospace evidence, one green.
+   ============================================================ */
+
+@theme {
+  /* Type */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
+
+  /* Paper — warm ivory, never pure white */
+  --color-paper-50: #fbf9f5;
+  --color-paper-100: #f5f1e8;
+  --color-paper-200: #ece5d7;
+
+  /* Ink — deep green-black, like a ledger cover */
+  --color-ink-950: #0b1310;
+  --color-ink-900: #111c17;
+  --color-ink-800: #1a2822;
+  --color-ink-700: #2a382f;
+  --color-ink-500: #55635a;
+  --color-ink: #16211b;
+
+  /* Hairlines */
+  --color-line: #e3dcc9;
+
+  /* Match — the accountant's green (verified, action, money-safe) */
+  --color-match-50: #eff6f0;
+  --color-match-100: #dfeee3;
+  --color-match-200: #bfdcc9;
+  --color-match-300: #7fb394;
+  --color-match-500: #2e8a60;
+  --color-match-600: #17714c;
+  --color-match-700: #115c3e;
+  --color-match-800: #0d4a32;
+
+  /* Exception — flag red, used ONLY for leakage semantics */
+  --color-exception-50: #fbf1ec;
+  --color-exception-100: #f6dfd6;
+  --color-exception-200: #ebc2b4;
+  --color-exception-600: #b23a24;
+  --color-exception-700: #8f2e1d;
+
+  /* Timing — amber, used ONLY for timing/variance semantics */
+  --color-timing-50: #faf3e1;
+  --color-timing-100: #f4e8c8;
+  --color-timing-700: #8a6410;
+}
+
+@layer base {
+  ::selection {
+    background: var(--color-match-100);
+    color: var(--color-ink-950);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* Eyebrow labels — monospace, tracked, always numbered */
+  .eyebrow {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-match-700;
+  }
+  .eyebrow-dark {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-match-300;
+  }
+
+  /* Display type — Fraunces serif for authority */
+  .display-1 {
+    @apply font-display text-4xl leading-[1.08] font-semibold tracking-tight text-ink sm:text-5xl lg:text-[3.35rem];
+  }
+  .display-2 {
+    @apply font-display text-3xl leading-[1.15] font-semibold tracking-tight text-ink sm:text-[2.15rem];
+  }
+  .display-3 {
+    @apply font-display text-xl font-semibold tracking-tight text-ink;
+  }
+
+  /* Body */
+  .lead {
+    @apply text-lg leading-relaxed text-ink/70;
+  }
+  .body-text {
+    @apply text-[15px] leading-7 text-ink/70;
+  }
+  .body-dark {
+    @apply text-[15px] leading-7 text-paper-50/70;
+  }
+
+  /* Buttons */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold transition-all duration-150;
+  }
+  .btn-primary {
+    @apply bg-match-700 text-paper-50 hover:bg-match-800 active:translate-y-px;
+  }
+  .btn-secondary {
+    @apply border border-ink/25 bg-transparent text-ink hover:border-ink;
+  }
+  .btn-dark {
+    @apply border border-paper-50/30 bg-transparent text-paper-50 hover:border-paper-50;
+  }
+
+  /* Cards */
+  .card {
+    @apply rounded-lg border border-line bg-white;
+  }
+  .card-dark {
+    @apply rounded-lg border border-paper-50/12 bg-ink-800;
+  }
+
+  /* Status chips — mirror the exception register semantics */
+  .chip,
+  .chip-match,
+  .chip-exception,
+  .chip-timing,
+  .chip-ink {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10.5px] font-medium tracking-[0.12em] uppercase;
+  }
+  .chip-match {
+    @apply border-match-200 bg-match-50 text-match-700;
+  }
+  .chip-exception {
+    @apply border-exception-200 bg-exception-50 text-exception-700;
+  }
+  .chip-timing {
+    @apply border-timing-100 bg-timing-50 text-timing-700;
+  }
+  .chip-ink {
+    @apply border-line bg-paper-100 text-ink/60;
+  }
+
+  /* Tables — first-class citizens in this business */
+  .th {
+    @apply px-4 py-3 text-left font-mono text-[10.5px] font-medium tracking-[0.14em] text-ink/45 uppercase;
+  }
+  .td {
+    @apply border-t border-line px-4 py-3.5 text-[13.5px] text-ink/80;
+  }
+
+  /* Nav */
+  .navlink {
+    @apply text-[13.5px] font-medium text-ink/70 transition-colors hover:text-ink;
+  }
+}

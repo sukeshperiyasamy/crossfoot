@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const clauses = [
+  {
+    t: '1 · Mutual NDA first',
+    b: 'A one-page mutual non-disclosure agreement is executed before any client file is received. It binds both parties equally, covers all formats (Excel, CSV, XML, verbal), and survives for two years after termination.',
+  },
+  {
+    t: '2 · Fixed scope, in writing',
+    b: 'Every engagement runs on a Statement of Work specifying the exact reconciliation question, source files, row ceiling, deliverables, fee and deadline. Work outside that boundary is new scope, priced by written change order before it begins.',
+  },
+  {
+    t: '3 · Read-only, always',
+    b: 'We work on exported copies. We never programmatically write, alter or delete anything inside your Tally, ERP, marketplace or banking systems. This is contractual, not discretionary.',
+  },
+  {
+    t: '4 · Offline processing & zero public AI',
+    b: 'Client records are processed locally on encrypted storage. We warrant in the NDA that raw client records will never be uploaded to public generative AI services or used to train external models.',
+  },
+  {
+    t: '5 · Deletion commitment',
+    b: 'Raw client files are permanently deleted 14 calendar days after project handover (unless an active retainer says otherwise) — or immediately on your written request, with written confirmation of deletion.',
+  },
+  {
+    t: '6 · Liability, capped',
+    b: 'Our total aggregate liability for any claim is capped at the fees actually paid under the specific engagement, and indirect or consequential damages (lost profits, tax penalties, business interruption) are excluded to the extent law permits.',
+  },
+  {
+    t: '7 · Management aid, not an audit',
+    b: 'Deliverables are internal decision-support aids based on records you supply. We provide no statutory audit, tax, legal or certification opinions, and conclusions about any discrepancy rest with you and your qualified accountants.',
+  },
+  {
+    t: '8 · Reliance on source records',
+    b: 'Outputs depend on the completeness of the files you export. Post-handover, scripts are warranted against the agreed file structures for 7 days (pilot) or 14 days (implementation); breakage from upstream changes — renamed columns, new formats — is billable work or covered by an active retainer.',
+  },
+  {
+    t: '9 · Revisions & acceptance',
+    b: 'Each deliverable includes one consolidated revision round requested within 5 business days of delivery. Deliverables not rejected in writing within that window are deemed accepted and final payment becomes due.',
+  },
+  {
+    t: '10 · Intellectual property',
+    b: 'On full payment you own the delivered datasets and reports for internal business use. We retain ownership of our pre-existing code libraries, generic cleaning scripts and methodologies.',
+  },
+  {
+    t: '11 · Payment',
+    b: 'Diagnostics are 100% payable before file intake. Implementations run 40/40/20 by milestone. Retainers bill monthly in advance. Out-of-scope work is quoted at ₹1,200/hour under signed change orders.',
+  },
+  {
+    t: '12 · Governing law',
+    b: 'Engagements are governed by the laws of India, with exclusive jurisdiction in Tamil Nadu; disputes are subject to fast-track sole arbitration under the Arbitration and Conciliation Act, 1996. E-signatures carry full legal force under the IT Act, 2000.',
+  },
+];
+---
+
+<Base
+  title="Engagement Terms — Plain-English Legal Summary | Crossfoot"
+  description="The twelve key clauses of every Crossfoot engagement in plain English: NDA, fixed scope, read-only handling, liability cap, deletion, IP, payment and governing law."
+>
+  <section class="border-b border-line bg-paper-100">
+    <div class="container-x py-16 sm:py-20">
+      <p class="eyebrow">Legal</p>
+      <h1 class="display-1 mt-5 max-w-3xl">Engagement terms, in plain English</h1>
+      <p class="lead mt-6 max-w-2xl">
+        The twelve clauses that govern every engagement — the same ones in the NDA and SOW you sign, with
+        the legalese translated. This page is a summary; the signed documents prevail.
+      </p>
+      <a href="/nda" class="btn-secondary mt-8">
+        Read the draft mutual NDA
+        <Icon name="arrow-right" class="h-4 w-4" />
+      </a>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20">
+    <div class="container-x grid gap-5 sm:grid-cols-2">
+      {
+        clauses.map((c) => (
+          <div class="card card-pad">
+            <h2 class="font-display text-[17px] font-semibold text-ink">{c.t}</h2>
+            <p class="body-text mt-2.5">{c.b}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaBand
+    title="Questions on terms? Ask before, not after."
+    sub="We would rather negotiate the SOW on a call than discover a mismatch mid-project."
+  />
+</Base>

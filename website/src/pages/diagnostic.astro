@@ -1,0 +1,236 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const deliverables = [
+  {
+    title: 'Data health & leakage audit',
+    body: 'Automated profiling of your exports — duplicates, missing keys, formatting breaks and reconciliation gaps, quantified.',
+  },
+  {
+    title: 'Consolidated master dataset',
+    body: 'Your two source files standardized, deduplicated and merged into one clean table with a uniform schema.',
+  },
+  {
+    title: 'Traceable exception register',
+    body: 'The core deliverable. Every discrepancy — unbilled, mismatched, or timing — listed with source-row references so your team can verify in seconds.',
+  },
+  {
+    title: 'Exception classification',
+    body: 'Category A: dispatched but unbilled. Category B: quantity or rate variances. Category C: legitimate timing lags and returns.',
+  },
+  {
+    title: 'Executive summary',
+    body: 'One page: matched percentage, exception value in rupees, and what each category means for your cash position.',
+  },
+  {
+    title: 'Management walkthrough',
+    body: 'A 30-minute session with you and your finance lead — findings explained, every question answered against the source data.',
+  },
+  {
+    title: 'Automation roadmap',
+    body: 'A fixed-price proposal to make the reconciliation permanent, valid for 14 days with your full diagnostic fee credited.',
+  },
+];
+
+const included = [
+  'One bounded reconciliation question (e.g., August dispatches vs. August invoices)',
+  'Up to two source workbooks — Excel, CSV, or Tally export',
+  'Combined volume up to 100,000 rows',
+  'Four-business-day delivery from receipt of clean inputs',
+  'One consolidated revision round within 5 business days',
+];
+const excluded = [
+  'Manual data entry from paper challans or photos',
+  'Adding files, sheets or workflows mid-pilot',
+  'Changes to matching rules after kickoff',
+  'Writing anything back into your live Tally — we are strictly read-only',
+  'Statutory audit, tax or legal opinions',
+];
+---
+
+<Base
+  title="The 4-Day Dispatch-to-Invoice Diagnostic — ₹1,999 fixed | Crossfoot"
+  description="A fixed-scope four-day reconciliation audit for distributors using Tally: traceable exception register, clean master dataset, executive walkthrough. ₹1,999 + GST introductory launch fee, fully credited toward automation."
+>
+  <!-- Hero -->
+  <section class="border-b border-line bg-paper-100">
+    <div class="container-x py-16 sm:py-20">
+      <p class="eyebrow">The entry engagement</p>
+      <div class="mt-5 flex flex-wrap items-end justify-between gap-6">
+        <h1 class="display-1 max-w-2xl">The 4-Day Dispatch-to-Invoice Diagnostic</h1>
+        <div class="text-right">
+          <p class="font-display text-4xl font-semibold tracking-tight text-ink">₹1,999<span class="text-xl text-ink/50"> + GST</span></p>
+          <p class="mt-1 font-mono text-[10.5px] tracking-[0.18em] text-ink/50 uppercase">Introductory Pilot · 100% upfront</p>
+        </div>
+      </div>
+      <p class="lead mt-6 max-w-2xl">
+        One bounded question: <em class="not-italic font-medium text-ink">did every dispatch that left your warehouse result in a matching sales invoice?</em>
+        We answer it with row-level evidence in four business days — under NDA, entirely offline, without touching your Tally.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href="/contact" class="btn-primary">
+          Book a 15-minute call
+          <Icon name="arrow-right" class="h-4 w-4" />
+        </a>
+        <a href="#fee" class="btn-secondary">Fee & terms</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables -->
+  <section class="py-20 lg:py-24">
+    <div class="container-x">
+      <SectionHead
+        index="01"
+        eyebrow="What you receive"
+        title="Seven deliverables. No retainers required to get them."
+      />
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          deliverables.map((d, i) => (
+            <div class="card card-pad">
+              <span class="font-mono text-[11px] tracking-[0.2em] text-match-700 uppercase">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="display-3 mt-3">{d.title}</h3>
+              <p class="body-text mt-2.5">{d.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Scope -->
+  <section class="border-y border-line bg-paper-100 py-20 lg:py-24">
+    <div class="container-x">
+      <SectionHead
+        index="02"
+        eyebrow="Scope discipline"
+        title="Where the fixed price holds — and where it can’t"
+        sub="A fixed price is only honest when the scope is frozen. This is the boundary, in writing, before you commit a rupee."
+      />
+      <div class="mt-12 grid gap-5 lg:grid-cols-2">
+        <div class="card overflow-hidden">
+          <div class="border-b border-match-200 bg-match-50 px-6 py-4">
+            <p class="font-mono text-[11px] font-medium tracking-[0.18em] text-match-700 uppercase">Included in ₹1,999</p>
+          </div>
+          <ul class="space-y-1 p-3">
+            {
+              included.map((item) => (
+                <li class="flex items-start gap-3 rounded-md px-3 py-2.5">
+                  <Icon name="check" class="mt-1 h-4 w-4 shrink-0 text-match-600" />
+                  <span class="text-[14px] leading-6 text-ink/80">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="card overflow-hidden">
+          <div class="border-b border-exception-200 bg-exception-50 px-6 py-4">
+            <p class="font-mono text-[11px] font-medium tracking-[0.18em] text-exception-700 uppercase">Explicitly out of scope</p>
+          </div>
+          <ul class="space-y-1 p-3">
+            {
+              excluded.map((item) => (
+                <li class="flex items-start gap-3 rounded-md px-3 py-2.5">
+                  <Icon name="x" class="mt-1 h-4 w-4 shrink-0 text-exception-600" />
+                  <span class="text-[14px] leading-6 text-ink/80">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fee & terms -->
+  <section id="fee" class="py-20 lg:py-24">
+    <div class="container-x grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
+      <div>
+        <SectionHead
+          index="03"
+          eyebrow="Fee & terms"
+          title="The clock starts when clean inputs arrive"
+          sub="Within 24 hours of receiving your files we run a feasibility check. If exports are corrupted, missing join keys or unreadable, we pause and tell you before burning a single day of the SLA."
+        />
+        <p class="body-text mt-6">
+          Terms are simple: <strong class="font-semibold text-ink">100% of the fee is payable before file intake</strong> — by NEFT, RTGS or UPI to a
+          current account, against a formal invoice and the signed SOW. The ₹1,999 is not a deposit on goodwill;
+          it is the price of the audit itself.
+        </p>
+      </div>
+      <div class="space-y-4">
+        <div class="card flex items-start gap-4 p-6">
+          <Icon name="rupee" class="mt-0.5 h-5 w-5 shrink-0 text-match-700" />
+          <div>
+            <h3 class="font-display text-lg font-semibold text-ink">₹1,999 + GST, 100% upfront</h3>
+            <p class="body-text mt-1.5">No hourly billing, no surprise line items. The fee covers the full seven-deliverable scope above.</p>
+          </div>
+        </div>
+        <div class="card flex items-start gap-4 p-6">
+          <Icon name="refresh" class="mt-0.5 h-5 w-5 shrink-0 text-match-700" />
+          <div>
+            <h3 class="font-display text-lg font-semibold text-ink">Credited 100% toward automation</h3>
+            <p class="body-text mt-1.5">
+              Commission an implementation sprint within 14 days of the walkthrough and the entire ₹1,999 is deducted from that project’s fee.
+            </p>
+          </div>
+        </div>
+        <div class="card flex items-start gap-4 p-6">
+          <Icon name="clock" class="mt-0.5 h-5 w-5 shrink-0 text-match-700" />
+          <div>
+            <h3 class="font-display text-lg font-semibold text-ink">4 business days, gated</h3>
+            <p class="body-text mt-1.5">Delivery runs from receipt of agreed, clean inputs — never from verbal approval. The feasibility gate protects both sides.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest section -->
+  <section class="border-y border-line bg-ink-950 py-20 lg:py-24">
+    <div class="container-x max-w-3xl">
+      <SectionHead
+        index="04"
+        eyebrow="What if nothing is wrong?"
+        title="Then you get a clean audit — and that is worth paying for"
+        dark
+      />
+      <p class="body-dark mt-6 text-[15.5px]">
+        We do not guarantee that we will find leaked money, because your operations may genuinely be running cleanly.
+        What we guarantee is <strong class="font-semibold text-paper-50">100% auditable certainty</strong>: every dispatch either ties
+        out to an invoice, or is documented with exact source references and a classification.
+      </p>
+      <p class="body-dark mt-4 text-[15.5px]">
+        Owners who receive a clean report get something they have never had before — a month’s books that a third party has
+        verified, with the matching rules documented so the check can be repeated. Most find that worth the fee on its own.
+      </p>
+    </div>
+  </section>
+
+  <!-- Data -->
+  <section class="py-20 lg:py-24">
+    <div class="container-x flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+      <div class="max-w-2xl">
+        <SectionHead
+          index="05"
+          eyebrow="Your data"
+          title="NDA first. Offline only. Deleted after."
+          sub="We never ask for live credentials, OTPs or bank logins — only exported files. Processing happens on an air-gapped, encrypted machine; nothing touches a cloud or a public AI tool; raw files are cryptographically deleted 14 days after handover."
+        />
+      </div>
+      <a href="/security" class="btn-secondary shrink-0">
+        Read the full security posture
+        <Icon name="arrow-right" class="h-4 w-4" />
+      </a>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Two files. Four days. One honest answer."
+    sub="Send us a 15-minute call request and tell us which two records in your business refuse to agree."
+  />
+</Base>

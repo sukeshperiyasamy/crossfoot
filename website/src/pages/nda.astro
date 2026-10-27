@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+// Print-ready draft of the one-page mutual NDA (from legal_contract_pack_nda_and_sow.md).
+// Use your browser's Print → Save as PDF to export a sendable copy.
+---
+
+<Base
+  title="Draft Mutual NDA — Read Before You Share Anything | Crossfoot"
+  description="The one-page mutual non-disclosure agreement Crossfoot executes before receiving any client data. Plain English, printable, binding both parties equally."
+>
+  <div class="container-x max-w-3xl py-14 sm:py-16">
+    <div class="flex items-center justify-between gap-6 print:hidden">
+      <div>
+        <p class="eyebrow">Transparency first</p>
+        <h1 class="display-2 mt-3">Draft Mutual NDA</h1>
+      </div>
+      <button onclick="window.print()" class="btn-secondary shrink-0">Print / Save as PDF</button>
+    </div>
+    <p class="body-text mt-4 max-w-2xl print:hidden">
+      This is the exact agreement we execute — with your details filled in — before receiving any file.
+      Read it now, or on paper, before the first call. Nothing is hidden behind a signature.
+    </p>
+
+    <!-- Document -->
+    <article class="card mt-10 bg-white p-8 sm:p-12 print:border-0 print:p-0">
+      <h2 class="font-display text-center text-xl font-semibold tracking-tight text-ink print:text-2xl">
+        MUTUAL NON-DISCLOSURE & DATA PRIVACY AGREEMENT
+      </h2>
+      <p class="mt-2 text-center font-mono text-[10.5px] tracking-[0.18em] text-ink/50 uppercase">
+        Draft for review · e-signed via Zoho Sign / DocuSign before engagement
+      </p>
+
+      <div class="mt-8 space-y-6 text-[13.5px] leading-6 text-ink/80">
+        <p>
+          Effective Date: <span class="font-mono">[DATE]</span>
+        </p>
+        <p>
+          Between: <strong class="font-semibold text-ink">Crossfoot</strong> ([Your full legal name / trade
+          name]), principal office at [Address, City, Tamil Nadu, PIN, India] (“Consultant”); and
+          <strong class="font-semibold text-ink">[Client Company Legal Name]</strong>, principal office at
+          [Client Address] (“Client”) — each a “Party”.
+        </p>
+
+        <div>
+          <h3 class="font-mono text-[11px] font-medium tracking-[0.16em] text-ink uppercase">1. Purpose</h3>
+          <p class="mt-2">
+            The Parties wish to explore and execute data reconciliation, consolidation and management
+            reporting services (the “Purpose”). In doing so, either Party may share confidential business
+            or technical information with the other.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-mono text-[11px] font-medium tracking-[0.16em] text-ink uppercase">2. Confidential information</h3>
+          <p class="mt-2">
+            “Confidential Information” means any non-public data shared in any format (.xlsx, .csv, .xml,
+            .json, PDF, screen-share or verbal), specifically including Client data — sales registers,
+            accounting exports (Tally, QuickBooks, Xero, ERP), bank statements, customer and vendor lists,
+            SKU-level costing, margins, inventory and tax identifiers — and Consultant materials —
+            proprietary scripts, Power Query templates, cleaning architectures, pricing and
+            methodologies. Exclusions: data that is public without breach, already lawfully known,
+            independently developed, or required to be disclosed by law or court order (with prompt
+            notice where permitted).
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-mono text-[11px] font-medium tracking-[0.16em] text-ink uppercase">3. Protection & need-to-know</h3>
+          <p class="mt-2">
+            Each Party will: (a) use the other’s Confidential Information strictly for the Purpose; (b)
+            protect it with industry-standard security including encrypted storage and password-protected
+            devices; and (c) never sell, publish or disclose it to any third party without prior written
+            consent.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-mono text-[11px] font-medium tracking-[0.16em] text-ink uppercase">4. Offline processing & zero public AI</h3>
+          <p class="mt-2">
+            Consultant expressly warrants: (a) <strong class="font-semibold text-ink">local deterministic execution</strong> —
+            all Client ledgers, spreadsheets and operational files are processed locally/offline using
+            tools such as Python, Microsoft Excel Power Query, SQL or Power BI Desktop, unless cloud
+            hosting is requested by Client in writing; and (b) <strong class="font-semibold text-ink">zero public AI
+            uploads</strong> — Client records will never be uploaded, pasted or transmitted into any public
+            third-party generative AI model, nor used to train external AI models, without express prior
+            written consent.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-mono text-[11px] font-medium tracking-[0.16em] text-ink uppercase">5. Retention & guaranteed deletion</h3>
+          <p class="mt-2">
+            Unless extended by an active retainer, Consultant retains raw Client files no longer than
+            fourteen (14) calendar days after handover, solely to support post-delivery verification. On
+            expiry — or immediately on Client’s written request at any time — all raw datasets and working
+            copies are permanently deleted from local drives and backups, with written confirmation on
+            request.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-mono text-[11px] font-medium tracking-[0.16em] text-ink uppercase">6. Term, e-signatures & governing law</h3>
+          <p class="mt-2">
+            This Agreement runs two (2) years from the Effective Date; confidentiality obligations for
+            financial and customer records survive two (2) years beyond termination. Electronic
+            signatures (PDF, Zoho Sign, DocuSign or email acceptance) carry the same force as ink. Governed
+            by the laws of India, exclusive jurisdiction in the courts of [City, Tamil Nadu, India].
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-2 gap-8 border-t border-line pt-8">
+          <div>
+            <p class="font-mono text-[10.5px] tracking-[0.16em] text-ink/50 uppercase">For Consultant</p>
+            <p class="mt-6 border-t border-ink/30 pt-2 text-[12.5px]">Signature · [Your Name], Principal</p>
+            <p class="mt-1 text-[12.5px] text-ink/60">Date: [DATE]</p>
+          </div>
+          <div>
+            <p class="font-mono text-[10.5px] tracking-[0.16em] text-ink/50 uppercase">For Client</p>
+            <p class="mt-6 border-t border-ink/30 pt-2 text-[12.5px]">Signature · [Signatory Name], [Title]</p>
+            <p class="mt-1 text-[12.5px] text-ink/60">Date: [DATE]</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <p class="body-text mt-6 text-[12.5px] print:hidden">
+      This draft is provided for review and is not legal advice. Have it reviewed by your own counsel
+      before signature if you wish — we expect scrutiny.
+    </p>
+  </div>
+</Base>

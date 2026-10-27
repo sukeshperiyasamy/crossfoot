@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const faqs = [
+  {
+    q: 'Tally already does reconciliation. What exactly do you do?',
+    a: 'Tally reconciles what lives inside Tally — bank statements against vouchers, ledgers against ledgers. It cannot see the warehouse gate register, the transporter’s LR, the bin card or a marketplace settlement file. We audit precisely that gap: operational records that never entered your accounting software, matched against the entries that did. That is cross-system reconciliation, and no native Tally report does it.',
+  },
+  {
+    q: 'My accountant / CA already handles all of this.',
+    a: 'Your CA does work we would never take: statutory compliance, GST filings, audit opinions. But CAs are rarely paid to police the daily gap between the godown gate and the sales register — and junior staff matching files by hand is exactly the fragile workaround we replace. We also make your CA faster: cleaner, reconciled source data means fewer unbillable hours before every audit.',
+  },
+  {
+    q: 'We can do this in Excel ourselves. Why pay you?',
+    a: 'You certainly have the spreadsheet skills. The real questions: how many days a month does a senior person spend on manual matching, what happens to those VLOOKUPs the day column headers change or that person resigns, and what remains unresolved after the matching is done? We deliver documented, deterministic rules with row-level traceability — a system, not a hero.',
+  },
+  {
+    q: 'Can you guarantee you’ll find leaked money?',
+    a: 'No — and anyone who guarantees findings before seeing your data is selling you something else. Your operations may genuinely be clean. What we guarantee is 100% auditable certainty: every dispatch either ties out to an invoice or is documented with exact source references. A clean report, verified by an outsider, is itself a valuable and rare artifact.',
+  },
+  {
+    q: 'Is my data safe? Will it end up in an AI tool?',
+    a: 'A mutual NDA is signed before we receive anything. Processing is 100% offline on an encrypted, air-gapped machine — no cloud drives, no uploads, and your records are never pasted into ChatGPT, Claude, Gemini or any public model. We ingest read-only copies, never touch your live Tally, and cryptographically delete raw files 14 days after handover. The full posture is on the security page.',
+  },
+  {
+    q: 'Why ₹1,999 fixed instead of an hourly rate?',
+    a: 'Because the scope is frozen first. One workflow, two files, 100,000 rows, four business days — bounded in a signed SOW before kickoff. Hourly billing punishes you for our learning curve and rewards slowness. A fixed price forces us to be efficient and gives you cost certainty. If your data needs extra cleaning, that is quoted as a change order you approve before we spend it.',
+  },
+  {
+    q: 'What if my files are a mess?',
+    a: 'Messy is the job — mismatches, duplicates and broken formats are precisely what we are paid to untangle. The 24-hour feasibility gate exists so messiness is discovered and priced before commitment, not after. If files are structurally unusable (paper-only records, no common keys), we tell you on day one rather than silently burning the SLA.',
+  },
+  {
+    q: 'Do you replace Tally or sell software?',
+    a: 'Never. Tally stays your system of record; we are strictly read-only on exports. The implementation sprint builds a pipeline that runs on your own machine with tools your team can open — Excel, Power Query, or a local script. No licenses to buy, no portal to log into, no vendor lock-in. You could fire us and keep running everything.',
+  },
+  {
+    q: 'What do you need from us to start?',
+    a: 'For the diagnostic: the two agreed exports (typically the dispatch register and the Tally sales register for the same month), a signed one-page NDA and SOW, and the fee paid upfront. Masked samples are welcome for the feasibility check. We never ask for live credentials, OTPs or remote access to your systems.',
+  },
+  {
+    q: 'The diagnostic finds a problem — then what?',
+    a: 'You own the findings; the decision window is 14 days. Most owners choose one of three paths: automate the workflow with an implementation sprint (the ₹1,999 credited), hand exceptions to their own staff using our documented rules, or engage us monthly for close-and-verify. Some take the files and run it themselves — that is a legitimate outcome, and the deliverables are yours regardless.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Base
+  title="FAQ — Objections Answered Plainly | Crossfoot"
+  description="Straight answers to the questions distributors ask first: what Tally can't do, why not use Excel, data safety, fixed pricing, and what happens if the audit finds nothing."
+>
+  <section class="border-b border-line bg-paper-100">
+    <div class="container-x py-16 sm:py-20">
+      <p class="eyebrow">Fair questions</p>
+      <h1 class="display-1 mt-5 max-w-3xl">Answered the way we’d answer in person</h1>
+      <p class="lead mt-6 max-w-2xl">
+        These are the objections we hear on nearly every first call. If yours isn’t here, ask it directly —
+        we answer hard questions on the first conversation, not after the invoice.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24">
+    <div class="container-x max-w-3xl">
+      <SectionHead index="01" eyebrow="The list" title="Ten answers, no hedging" />
+      <div class="mt-12 space-y-3">
+        {
+          faqs.map((f, i) => (
+            <details class="card group px-6 py-1 open:bg-white sm:px-8" open={i === 0}>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
+                <span class="flex items-baseline gap-4">
+                  <span class="font-mono text-[11px] font-medium text-ink/35">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="font-display text-[17px] leading-snug font-semibold text-ink sm:text-lg">{f.q}</span>
+                </span>
+                <span class="shrink-0 text-match-700 transition-transform group-open:rotate-45">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                    <path d="M12 5v14" /><path d="M5 12h14" />
+                  </svg>
+                </span>
+              </summary>
+              <p class="body-text border-t border-line pt-5 pb-6">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Have a question this page didn’t answer?"
+    sub="Fifteen minutes, no pitch. Bring your hardest objection — we would rather lose the call than the truth."
+  />
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</Base>

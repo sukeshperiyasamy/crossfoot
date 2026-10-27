@@ -1,0 +1,139 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const principles = [
+  {
+    title: 'Evidence over enthusiasm',
+    body: 'We would rather lose a sale than win one on a compliment. If your records look clean on the feasibility check, we say so before you pay for a full audit.',
+  },
+  {
+    title: 'Offline by default',
+    body: 'Client financial data never touches a cloud drive or a public AI tool — not as a preference, as an architecture. If it can’t be done offline, it doesn’t get done.',
+  },
+  {
+    title: 'Scope frozen before price fixed',
+    body: 'Every quote is bound to a written scope: files, rows, rules, deliverables, deadline. Changes are priced before they happen, never absorbed silently.',
+  },
+  {
+    title: 'You can fire us and keep everything',
+    body: 'Deliverables, matching rules and pipelines are documented so your own team can run them. Lock-in is a business model for agencies, not for us.',
+  },
+];
+
+const notDo = [
+  'Statutory audit or tax opinions — we are data engineers, not CAs',
+  'Bookkeeping, data entry or paper digitisation',
+  'Writing to live Tally, ERP or banking systems',
+  'Selling software licenses or dashboards nobody asked for',
+];
+---
+
+<Base
+  title="About Crossfoot — A Reconciliation Practice, Not an Agency | Crossfoot"
+  description="Crossfoot is a specialist data reconciliation practice for distributors and manufacturers in Tamil Nadu. Our method, our operating principles, and what we deliberately don't do."
+>
+  <section class="border-b border-line bg-paper-100">
+    <div class="container-x py-16 sm:py-20">
+      <p class="eyebrow">About</p>
+      <h1 class="display-1 mt-5 max-w-3xl">A practice, not an agency</h1>
+      <p class="lead mt-6 max-w-2xl">
+        Crossfoot is a specialist reconciliation practice: one narrow craft — matching what businesses
+        shipped against what they billed — done with audit-grade discipline. No account managers, no
+        dashboards-for-the-sake-of-dashboards, no hourly meters.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24">
+    <div class="container-x grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
+      <div>
+        <SectionHead index="01" eyebrow="Why this practice exists" title="Born from one question that wouldn’t go away" />
+        <div class="mt-8 space-y-5">
+          <p class="body-text text-[15.5px]">
+            <em class="not-italic font-medium text-ink">“The gate register says 340 units left on Friday. Tally says 300 were billed. Who is checking?”</em>
+          </p>
+          <p class="body-text">
+            In most growing distributorships, the honest answer is: a tired accounts clerk, at month-end,
+            with VLOOKUPs — if the month wasn’t too busy. The gap between operational reality and the books
+            is the most expensive unmanaged risk in Indian SMEs, and it hides in plain sight because every
+            single system involved is “working fine.”
+          </p>
+          <p class="body-text">
+            Crossfoot exists to close that gap with the discipline of an audit and the speed of a specialist.
+            We take one bounded workflow, prove every discrepancy with row-level evidence, and either fix it
+            permanently or hand you back clean certainty. We chose the name from accounting itself: to
+            <em class="not-italic font-medium text-ink">cross-foot</em> a table is to verify its totals across
+            rows <em class="not-italic font-medium text-ink">and</em> columns — because a number that only
+            checks out one way isn’t checked.
+          </p>
+          <p class="body-text">
+            The practice is deliberately small. You work directly with the person who builds your pipeline,
+            writes your matching rules and presents your findings. That is a feature.
+          </p>
+        </div>
+      </div>
+
+      <aside class="lg:pt-4">
+        <div class="card card-pad">
+          <p class="font-mono text-[10.5px] tracking-[0.2em] text-ink/45 uppercase">Direct line</p>
+          <p class="body-text mt-3">
+            No receptionists, no ticketing. Mail goes to the founder’s inbox and is answered within one
+            business day.
+          </p>
+          <a href="/contact" class="btn-primary mt-5 w-full">
+            Start a conversation
+            <Icon name="arrow-right" class="h-4 w-4" />
+          </a>
+          <p class="mt-4 font-mono text-[11px] leading-5 tracking-[0.06em] text-ink/50">
+            hello@crossfoot.in<br />
+            Coimbatore, Tamil Nadu
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="border-y border-line bg-paper-100 py-20 lg:py-24">
+    <div class="container-x">
+      <SectionHead index="02" eyebrow="Operating principles" title="Four rules we don’t bend" />
+      <div class="mt-12 grid gap-5 sm:grid-cols-2">
+        {
+          principles.map((p, i) => (
+            <div class="card card-pad">
+              <span class="font-mono text-[11px] tracking-[0.2em] text-match-700 uppercase">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="display-3 mt-3">{p.title}</h3>
+              <p class="body-text mt-2.5">{p.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Not-do list -->
+  <section class="py-20 lg:py-24">
+    <div class="container-x max-w-3xl">
+      <SectionHead index="03" eyebrow="Boundaries" title="What we deliberately don’t do" />
+      <ul class="mt-10 space-y-3">
+        {
+          notDo.map((item) => (
+            <li class="flex items-start gap-3 border-b border-line pb-3">
+              <Icon name="x" class="mt-1 h-4 w-4 shrink-0 text-exception-600" />
+              <span class="text-[14.5px] leading-6 text-ink/80">{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="body-text mt-8">
+        Boundaries keep the craft sharp. If you need any of the above, we will happily point you to people
+        who do them well.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

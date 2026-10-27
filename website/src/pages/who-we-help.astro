@@ -1,0 +1,148 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const segments = [
+  {
+    tag: 'Primary practice',
+    icon: 'building',
+    title: 'Distributors & stockists',
+    body: 'Industrial supplies, electricals, switchgear, pumps and motors, fasteners, hardware, packaging. The business where goods leave on challans, dealers pay late, and every record lives in a different file.',
+    fits: [
+      'Multi-godown stock that never ties out to Tally',
+      'Unbilled dispatches and late dealer invoicing',
+      'Unallocated customer receipts in the bank statement',
+      'Dead stock hiding inside a healthy-looking inventory figure',
+    ],
+    offer: 'Entry offer: the 4-day dispatch-to-invoice diagnostic.',
+  },
+  {
+    tag: 'Secondary practice',
+    icon: 'briefcase',
+    title: 'SME manufacturers',
+    body: 'Precision machining, foundries, auto components, textiles. Tally on one side; shop-floor trackers, job-work challans and BOM sheets on the other.',
+    fits: [
+      'Job-work material issued vs. finished returns — scrap beyond BOM norms',
+      'Dispatch challans from the factory gate vs. sales invoices',
+      'Purchase orders vs. goods-received notes vs. vendor bills',
+      'Production and procurement numbers arriving weeks late',
+    ],
+    offer: 'Entry offer: a production-to-finance reconciliation, scoped after a discovery call — BOM and scrap tolerance rules must be agreed first.',
+  },
+  {
+    tag: 'Partner channel',
+    icon: 'book',
+    title: 'CA & bookkeeping firms',
+    body: 'Practices of 5–30 staff carrying 20–150 SME clients. Junior articles burn unbillable hours cleaning client exports before every audit and GST cycle. We take that work white-label.',
+    fits: [
+      'Pre-audit scrubbing of client bank CSVs and sales registers',
+      'Marketplace settlement and ledger cleanups at wholesale rates',
+      'Repeatable monthly MIS packs for your SME roster',
+      'Strictly behind your brand — we never contact your clients',
+    ],
+    offer: 'Partner model: flat per-client wholesale rates under NDA. Ask for the partner pack.',
+  },
+];
+
+const notForUs = [
+  {
+    title: 'Paper-only records',
+    body: 'If dispatches live in handwritten books with no digital export, automation has nothing to grip. Digitise first; we can point you to who does that.',
+  },
+  {
+    title: '“Adjust” requests',
+    body: 'Asking us to hide sales, alter invoices or reconcile two sets of books ends the conversation immediately. We keep records that would embarrass neither of us.',
+  },
+  {
+    title: 'Guaranteed-fraud hunts',
+    body: 'We report discrepancies requiring investigation. We do not certify theft, embezzlement or tax evasion — those conclusions belong to you and your auditor.',
+  },
+  {
+    title: 'Price-by-the-hour shoppers',
+    body: 'If the buying question is “what’s your rate per hour”, the fit is wrong. We sell bounded outcomes at fixed prices, and that only works for buyers who want the outcome.',
+  },
+];
+---
+
+<Base
+  title="Who We Help — Distributors, Manufacturers, CA Firms | Crossfoot"
+  description="Crossfoot works with owner-managed distributors and manufacturers in Coimbatore, Chennai and Karur, plus white-label partnerships with CA firms. See the fit criteria — and who we decline."
+>
+  <section class="border-b border-line bg-paper-100">
+    <div class="container-x py-16 sm:py-20">
+      <p class="eyebrow">Who we help</p>
+      <h1 class="display-1 mt-5 max-w-3xl">Businesses where goods and money move on different papers</h1>
+      <p class="lead mt-6 max-w-2xl">
+        We are deliberately narrow. Deep familiarity with a handful of workflows is why a four-day
+        diagnostic is possible at a fixed price — and why we decline work we cannot do excellently.
+      </p>
+      <p class="mt-7 font-mono text-[11.5px] tracking-[0.14em] text-ink/50 uppercase">
+        Coimbatore — Gandhipuram · Ram Nagar · Kurichi · Peelamedu &nbsp;|&nbsp; Chennai — Sowcarpet · George Town · Ambattur &nbsp;|&nbsp; Karur &nbsp;|&nbsp; Remote across India
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24">
+    <div class="container-x space-y-6">
+      {
+        segments.map((s, i) => (
+          <div class="card grid gap-8 p-6 sm:p-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
+            <div>
+              <div class="flex items-center gap-4">
+                <div class="flex h-11 w-11 items-center justify-center rounded-md border border-line bg-paper-50">
+                  <Icon name={s.icon} class="h-5.5 w-5.5 text-match-700" />
+                </div>
+                <span class="chip chip-ink">{s.tag}</span>
+              </div>
+              <h2 class="display-2 mt-5">{s.title}</h2>
+              <p class="body-text mt-4">{s.body}</p>
+              <p class="mt-5 border-t border-line pt-4 text-[13.5px] font-medium text-match-700">{s.offer}</p>
+            </div>
+            <div class="rounded-lg border border-line bg-paper-50 p-6">
+              <p class="font-mono text-[10.5px] tracking-[0.2em] text-ink/45 uppercase">Strong fit signals</p>
+              <ul class="mt-4 space-y-3">
+                {s.fits.map((f) => (
+                  <li class="flex items-start gap-3">
+                    <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-match-600" />
+                    <span class="text-[14px] leading-6 text-ink/80">{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Red flags -->
+  <section class="border-y border-line bg-ink-950 py-20 lg:py-24">
+    <div class="container-x">
+      <SectionHead
+        index="02"
+        eyebrow="Who we decline"
+        title="Four conversations we don’t take"
+        sub="Saying no to the wrong work is how we stay excellent at the right work."
+        dark
+      />
+      <div class="mt-12 grid gap-5 sm:grid-cols-2">
+        {
+          notForUs.map((r) => (
+            <div class="card-dark p-6 sm:p-8">
+              <Icon name="x" class="h-5 w-5 text-exception-200" />
+              <h3 class="font-display mt-4 text-lg font-semibold text-paper-50">{r.title}</h3>
+              <p class="body-dark mt-2.5">{r.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Not sure your business fits? Ask."
+    sub="Describe your two stubborn files on a 15-minute call. If we are not the right practice for it, we will say so and point you somewhere better."
+  />
+</Base>

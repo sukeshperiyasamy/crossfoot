@@ -1,0 +1,88 @@
+---
+// The signature visual: a reconciliation exception register.
+// Chip semantics (matched / exception / timing) mirror our actual deliverable.
+interface Props {
+  full?: boolean;
+}
+const { full = false } = Astro.props;
+
+const rows = [
+  { dc: 'DC-1045', date: '26 Aug', disp: '84,200', inv: '—', diff: '84,200', status: 'Unbilled · 9 days', kind: 'exception' },
+  { dc: 'DC-1001', date: '19 Aug', disp: '42,800', inv: '42,800', diff: '0', status: 'Matched', kind: 'match' },
+  { dc: 'DC-1080', date: '28 Aug', disp: '31,500', inv: '27,300', diff: '4,200', status: 'Qty variance', kind: 'timing' },
+  { dc: 'DC-1112', date: '31 Aug', disp: '12,900', inv: '12,900', diff: '0', status: 'Timing lag · billed 05 Sep', kind: 'timing' },
+  { dc: 'DC-1093', date: '29 Aug', disp: '66,400', inv: '66,400', diff: '0', status: 'Matched', kind: 'match' },
+  { dc: 'DC-1076', date: '27 Aug', disp: '23,750', inv: '—', diff: '23,750', status: 'Unbilled · 6 days', kind: 'exception' },
+];
+
+const fullRows = full
+  ? [
+      ...rows,
+      { dc: 'DC-1038', date: '22 Aug', disp: '9,800', inv: '9,800', diff: '0', status: 'Matched', kind: 'match' },
+      { dc: 'DC-1058', date: '25 Aug', disp: '57,300', inv: '57,300', diff: '0', status: 'Matched', kind: 'match' },
+      { dc: 'DC-1064', date: '26 Aug', disp: '18,450', inv: '—', diff: '18,450', status: 'Unbilled · 5 days', kind: 'exception' },
+    ]
+  : rows;
+
+const chipClass = {
+  match: 'chip-match',
+  exception: 'chip-exception',
+  timing: 'chip-timing',
+};
+---
+
+<figure class="overflow-hidden rounded-lg border border-line bg-white shadow-[0_1px_2px_rgba(22,33,27,0.05)]">
+  <div class="flex items-center justify-between border-b border-line bg-paper-100 px-4 py-3">
+    <p class="font-mono text-[10.5px] font-medium tracking-[0.18em] text-ink/55 uppercase">
+      Exception register — August
+    </p>
+    <span class="chip chip-ink">Synthetic data</span>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full min-w-[560px] border-collapse">
+      <thead>
+        <tr>
+          <th class="th">Challan</th>
+          <th class="th">Date</th>
+          <th class="th text-right!">Dispatched ₹</th>
+          <th class="th text-right!">Invoiced ₹</th>
+          <th class="th text-right!">Δ ₹</th>
+          <th class="th">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          fullRows.map((r) => (
+            <tr class="hover:bg-paper-50">
+              <td class="td font-mono text-[12.5px] font-medium text-ink">{r.dc}</td>
+              <td class="td font-mono text-[12.5px] text-ink/60">{r.date}</td>
+              <td class="td text-right font-mono text-[12.5px]">{r.disp}</td>
+              <td class="td text-right font-mono text-[12.5px]">{r.inv}</td>
+              <td class:list={['td text-right font-mono text-[12.5px]', r.diff !== '0' && 'font-medium text-exception-700']}>
+                {r.diff}
+              </td>
+              <td class="td"><span class={chipClass[r.kind]}>{r.status}</span></td>
+            </tr>
+          ))
+        }
+      </tbody>
+      <tfoot>
+        <tr class="bg-paper-100">
+          <td class="td font-mono text-[11px] tracking-[0.1em] text-ink/55 uppercase" colspan="2">
+            Control totals
+          </td>
+          <td class="td text-right font-mono text-[12.5px] font-medium">3,46,300</td>
+          <td class="td text-right font-mono text-[12.5px] font-medium">2,38,400</td>
+          <td class="td text-right font-mono text-[12.5px] font-semibold text-exception-700">1,07,900</td>
+          <td class="td">
+            <span class="chip chip-ink">8 items flagged</span>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <figcaption class="border-t border-line bg-paper-50 px-4 py-3 text-[12px] text-ink/55">
+    Every flagged row carries source references (DispatchRegister.xlsx · row 214 → SalesRegister.xlsx · no match),
+    so your team can verify each exception in seconds.
+  </figcaption>
+</figure>
