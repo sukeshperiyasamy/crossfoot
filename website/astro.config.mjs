@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://crossfoot.example.com',
+  site: 'https://crossfoot.netlify.app',
   vite: {
     plugins: [tailwindcss()],
   },

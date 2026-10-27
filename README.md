@@ -1,5 +1,8 @@
 # Crossfoot — B2B Reconciliation & Data Automation Practice
 
+🌐 **Live Production Website:** [https://crossfoot.netlify.app](https://crossfoot.netlify.app)  
+📦 **GitHub Repository:** [https://github.com/sukeshperiyasamy/crossfoot](https://github.com/sukeshperiyasamy/crossfoot)
+
 > **The Ledger Control Engine**: A fixed-scope business data consolidation and reconciliation practice for distributors and manufacturers in Tamil Nadu (Coimbatore & Chennai).
 
 Crossfoot matches warehouse physical dispatches against accounting sales records (Tally / ERP) to isolate unbilled challans, quantity shortfalls, rate discrepancies, and timing lags with row-level proof.

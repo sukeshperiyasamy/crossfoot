@@ -1,6 +1,8 @@
 # Crossfoot Website
 
-Static marketing site for the reconciliation practice, built per `../website_development_specification.md`.
+🌐 **Live Website:** [https://crossfoot.netlify.app](https://crossfoot.netlify.app)
+
+Static marketing site for the reconciliation practice, built per `../docs/website_development_specification.md`.
 
 **Stack:** Astro 5 + Tailwind CSS 4 (design system in `src/styles/global.css`) · deployed on **Netlify** (`netlify.toml` included). No backend anywhere.
 
