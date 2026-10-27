@@ -11,14 +11,15 @@ Crossfoot matches warehouse physical dispatches against accounting sales records
 - **`/website`**: The official marketing site built with Astro 5, Tailwind CSS v4, and modern semantic typography.
   - Complete 14-page marketing suite (`/`, `/diagnostic`, `/how-it-works`, `/proof`, `/pricing`, `/security`, `/faq`, `/about`, `/contact`, `/legal-summary`, `/nda`, `/who-we-help`, `/privacy`, `/thanks`).
   - Zero cloud database exposure — 100% air-gapped security posture.
-- **Master Strategic Playbooks & Research**:
-  - `business_model_strategy_and_canvas.md`: Full operating economics, beachhead strategy, and revenue projections.
-  - `pricing_strategy_and_economic_model.md`: Unit economics, ₹1,999 entry diagnostic, and ₹25k–₹50k sprint tiers.
-  - `operational_technical_and_regulatory_playbook.md`: Air-gapped Python/DuckDB pipeline, 4-day sprint workflow.
-  - `legal_contract_pack_nda_and_sow.md`: Mutual NDA, Statement of Work, and data disposal protocols.
-  - `seo_strategy_and_local_domination_playbook.md`: Local organic search playbook for Coimbatore & Chennai B2B clusters.
-  - `customer_acquisition_plan_coimbatore_distributors.md`: 18-minute discovery calls, channel partnerships, and lead lists.
-  - `startup_pre_mortem_and_risk_register.md`: 12 failure modes, early warning indicators, and mitigation protocols.
+- **`/docs`**: Master Strategic Playbooks & Research Suite (26 documents):
+  - `docs/business_model_strategy_and_canvas.md`: Full operating economics, beachhead strategy, and revenue projections.
+  - `docs/pricing_strategy_and_economic_model.md`: Unit economics, ₹1,999 entry diagnostic, and ₹25k–₹50k sprint tiers.
+  - `docs/operational_technical_and_regulatory_playbook.md`: Air-gapped Python/DuckDB pipeline, 4-day sprint workflow.
+  - `docs/legal_contract_pack_nda_and_sow.md`: Mutual NDA, Statement of Work, and data disposal protocols.
+  - `docs/seo_strategy_and_local_domination_playbook.md`: Local organic search playbook for Coimbatore & Chennai B2B clusters.
+  - `docs/customer_acquisition_plan_coimbatore_distributors.md`: 18-minute discovery calls, channel partnerships, and lead lists.
+  - `docs/startup_pre_mortem_and_risk_register.md`: 12 failure modes, early warning indicators, and mitigation protocols.
+  - *(See `/docs` for all 26 strategy guides, risk registers, and operational specifications)*
 
 ---
 
